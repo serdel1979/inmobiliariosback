@@ -9,11 +9,10 @@ const config: ConnectionOptions = {
     username: process.env.TYPEORM_USERNAME,
     password: process.env.TYPEORM_PASSWORD,
     database: process.env.TYPEORM_DATABASE,
-    //entities: [__dirname + '\\entity\\src*.entity{.ts,.js}'],
+    entities: [process.env.TYPEORM_ENTITIES],
     synchronize: false,
     migrationsRun: true,
     logging: true,
-    //migrations: [__dirname + '/../migrations/**/*{.ts,.js}'],
     cli: {
         migrationsDir: './src/migrations',
     }
