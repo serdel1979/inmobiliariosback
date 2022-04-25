@@ -1,5 +1,7 @@
 import { ConnectionOptions } from 'typeorm';
 import {ConfigModule} from "@nestjs/config";
+import { join } from 'node:path/win32';
+//import { join } from 'path';
 
 ConfigModule.forRoot()
 
@@ -9,8 +11,8 @@ const config: ConnectionOptions = {
     username: process.env.TYPEORM_USERNAME,
     password: process.env.TYPEORM_PASSWORD,
     database: process.env.TYPEORM_DATABASE,
-    entities: [process.env.TYPEORM_ENTITIES],
-    synchronize: false,
+    entities: [join(__dirname, '**', '*.entity.{ts,js}')],
+    synchronize: true,
     migrationsRun: true,
     logging: true,
     cli: {
