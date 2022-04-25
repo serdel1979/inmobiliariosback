@@ -5,7 +5,7 @@
     "username": "root",
     "password": "root",
     "database": "real_state_sets",
-    "entities": ["dist/**/*.entity.js"], 
+    "entities": ["dist/real_state_sets/entity/*.entity.js"], 
     "migrations":["src/migrations/*{.ts,.js}"],
     "cli": {
         "migrationsDir": "src/migrations"
