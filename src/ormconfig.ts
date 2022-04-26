@@ -1,6 +1,8 @@
 import { ConnectionOptions } from 'typeorm';
 import {ConfigModule} from "@nestjs/config";
-import { join } from 'node:path/win32';
+import { join } from 'path';
+
+
 //import { join } from 'path';
 
 ConfigModule.forRoot()
