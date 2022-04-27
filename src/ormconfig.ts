@@ -14,11 +14,15 @@ const config: ConnectionOptions = {
     password: process.env.TYPEORM_PASSWORD,
     database: process.env.TYPEORM_DATABASE,
     entities: [join(__dirname, '**', '*.entity.{ts,js}')],
+    migrations: ['src/real_state_sets/migration/*.ts'],
+    subscribers: ['src/subscriber/**/*.ts'],
     synchronize: true,
     migrationsRun: true,
     logging: true,
     cli: {
+        entitiesDir: 'src/real_state_sets/entity',
         migrationsDir: './src/migrations',
+        subscribersDir: 'src/subscriber'
     }
 }
 

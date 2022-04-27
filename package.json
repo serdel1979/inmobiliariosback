@@ -1,5 +1,5 @@
 {
-  "name": "libros",
+  "name": "real_state_sets",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -19,10 +19,11 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "migrate": "ts-node node_modules/.bin/typeorm migration:run",
-    "migrate:generate": "ts-node node_modules/typeorm/cli.js migration:generate --config ./ormconfig.json --name",
-    "migration:run": "ts-node node_modules/typeorm/cli.js migration:run --config ./ormconfig.json",
-    "migration:revert": "ts-node node_modules/typeorm/cli.js migration:run --config ./ormconfig.json"
+    "db:drop": "npm run typeorm:cli schema:drop",
+    "migration:generate": "typeorm migration:create -n",
+    "db:migrate":"npm run typeorm:cli migration:run",
+    "db:revert":"npm run typeorm:cli migration:revert",
+    "db:sync":"npm run typeorm:cli schema:sync && npm run db:migrate"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",

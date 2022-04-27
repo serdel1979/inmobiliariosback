@@ -22,5 +22,3 @@ import * as ormconfig from './ormconfig';
   providers: [AppService],
 })
 export class AppModule { }
-
-console.log(ormconfig);
