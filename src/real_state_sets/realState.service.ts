@@ -19,17 +19,18 @@ export class RealStateService {
     return this.realStateRepository.save(newRealState);
   }
 
-  //  async deleteBook(bookId: string): Promise<any> {
-  //     return await this.realStateRepository.delete({ id: parseInt(bookId) });
-  //   }
+  async deleteRealState(realStateId: string): Promise<any> {
+      return await this.realStateRepository.delete({ id: parseInt(realStateId) });
+  }
 
-  /*async updateBook(bookId: string, newBook: BookDto): Promise<Book> {
+  async updateRealState(realStateId: string, newRealState: RealStateDTO): Promise<RealState> {
+    console.log(realStateId);
     let toUpdate = await this.realStateRepository.findOne({
-      where: { id: parseInt(bookId) },
+      where: { id: parseInt(realStateId) },
     });
-    let updated = Object.assign(toUpdate, newBook);
+    let updated = Object.assign(toUpdate, newRealState);
     return this.realStateRepository.save(updated);
-  }*/
+  }
 
   async findRealState(realStateId: number): Promise<RealState> {
     return await this.realStateRepository.findOne({

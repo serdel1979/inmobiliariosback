@@ -1,5 +1,5 @@
 import { RealStateDTO } from './realState.dto';
-import { Controller, Get, Param, Req, Post, Body } from '@nestjs/common';
+import { Controller, Get, Param, Req, Post, Body, Delete, Put } from '@nestjs/common';
 import { RealStateService } from './realState.service';
 import { Request } from 'express';
 import { RealState } from './entity/realState.entity';
@@ -18,18 +18,18 @@ export class RealStateController {
     return this.realStateService.createRealState(newRealState);
   }
 
-  /*
-  @Delete(':bookId')
-  deleteBook(@Param('bookId') bookId: string) {
-    return this.booksService.deleteBook(bookId);
+  
+  @Delete(':realStateId')
+  deleteRealState(@Param('realStateId') realStateId: string) {
+    return this.realStateService.deleteRealState(realStateId);
   }
 
-  @Put(':bookId')
-  updateBook(@Param('bookId') bookId: string, @Body() body): Promise<Book> {
-    let newBook: BookDto = body;
-    return this.booksService.updateBook(bookId, newBook);
+  @Put(':realStateId')
+  updateRealState(@Param('realStateId') realStateId: string, @Body() body): Promise<RealState> {
+    let newRealState: RealStateDTO = body;
+    return this.realStateService.updateRealState(realStateId, newRealState);
   }
-*/
+
   @Get(':realStateId')
   findRealState(@Param('realStateId') realStateId: number): Promise<RealState> {
     return this.realStateService.findRealState(realStateId);
