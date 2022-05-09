@@ -1,3 +1,4 @@
+import { State } from './entity/state.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -20,15 +21,18 @@ export class RealStateService {
   }
 
   async deleteRealState(realStateId: string): Promise<any> {
-      return await this.realStateRepository.delete({ id: parseInt(realStateId) });
+    return await this.realStateRepository.delete({ id: parseInt(realStateId) });
   }
 
-  async updateRealState(realStateId: string, newRealState: RealStateDTO): Promise<RealState> {
+  async updateRealState(
+    realStateId: string,
+    newRealState: RealStateDTO,
+  ): Promise<RealState> {
     console.log(realStateId);
-    let toUpdate = await this.realStateRepository.findOne({
+    const toUpdate = await this.realStateRepository.findOne({
       where: { id: parseInt(realStateId) },
     });
-    let updated = Object.assign(toUpdate, newRealState);
+    const updated = Object.assign(toUpdate, newRealState);
     return this.realStateRepository.save(updated);
   }
 

@@ -1,5 +1,14 @@
 import { RealStateDTO } from './realState.dto';
-import { Controller, Get, Param, Req, Post, Body, Delete, Put } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Req,
+  Post,
+  Body,
+  Delete,
+  Put,
+} from '@nestjs/common';
 import { RealStateService } from './realState.service';
 import { Request } from 'express';
 import { RealState } from './entity/realState.entity';
@@ -15,18 +24,21 @@ export class RealStateController {
 
   @Post()
   createRealState(@Body() newRealState: RealStateDTO): Promise<RealState> {
+    console.log(newRealState);
     return this.realStateService.createRealState(newRealState);
   }
 
-  
   @Delete(':realStateId')
   deleteRealState(@Param('realStateId') realStateId: string) {
     return this.realStateService.deleteRealState(realStateId);
   }
 
   @Put(':realStateId')
-  updateRealState(@Param('realStateId') realStateId: string, @Body() body): Promise<RealState> {
-    let newRealState: RealStateDTO = body;
+  updateRealState(
+    @Param('realStateId') realStateId: string,
+    @Body() body,
+  ): Promise<RealState> {
+    const newRealState: RealStateDTO = body;
     return this.realStateService.updateRealState(realStateId, newRealState);
   }
 

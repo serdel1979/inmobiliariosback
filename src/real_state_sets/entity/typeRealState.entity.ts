@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { RealState } from './realState.entity';
 
 @Entity()
 export class TypeRealState {
@@ -7,4 +8,9 @@ export class TypeRealState {
 
   @Column()
   description: string;
+
+  @OneToMany(() => RealState, (realState) => realState.type_real_state, {
+    cascade: true,
+  })
+  realState: RealState[];
 }
