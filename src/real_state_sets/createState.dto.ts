@@ -1,5 +1,5 @@
 import { State } from './entity/state.entity';
-export class CreateRealStateDto {
+export class CreateStateDto {
   readonly state: string;
   readonly updated_user: Date;
   readonly sub_state: string;

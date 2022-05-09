@@ -33,14 +33,17 @@ export class RealState {
   @Column()
   register_source: string;
 
-  @ManyToOne(() => TypeRealState, { nullable: false })
+  @ManyToOne(() => TypeRealState, (type_real_state) => type_real_state.realState, { nullable: false })
   @JoinColumn()
   type_real_state: TypeRealState;
 
-  @ManyToOne(() => District, { nullable: false })
+
+  @OneToMany(() => State, (state) => state.real_state)
+  @JoinColumn()
+  states: State[];
+
+
+  @ManyToOne(() => District, (district) => district.realstates)
   @JoinColumn()
   district: District;
-
-  @OneToMany(() => State, (state) => state.real_state, { cascade: true })
-  states: State[];
 }

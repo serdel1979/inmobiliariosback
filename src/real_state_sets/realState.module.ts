@@ -4,9 +4,11 @@ import { RealStateController } from './realState.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeRealState } from './entity/typeRealState.entity';
 import { RealState } from './entity/realState.entity';
+import { District } from './entity/district.entity';
+import { State } from './entity/state.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([RealState, TypeRealState])],
+  imports: [TypeOrmModule.forFeature([RealState, TypeRealState, District, State])],
   providers: [RealStateService],
   controllers: [RealStateController],
 })

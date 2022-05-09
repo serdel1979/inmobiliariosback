@@ -5,7 +5,7 @@ import { join } from 'path';
 ConfigModule.forRoot();
 
 const config: ConnectionOptions = {
-  type: 'postgres',
+  type: 'mysql',
   host: process.env.TYPEORM_HOST,
   username: process.env.TYPEORM_USERNAME,
   password: process.env.TYPEORM_PASSWORD,

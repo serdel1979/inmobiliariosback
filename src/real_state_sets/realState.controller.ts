@@ -1,4 +1,3 @@
-import { RealStateDTO } from './realState.dto';
 import {
   Controller,
   Get,
@@ -12,10 +11,11 @@ import {
 import { RealStateService } from './realState.service';
 import { Request } from 'express';
 import { RealState } from './entity/realState.entity';
+import { RealStateDto } from './createRealState.dto';
 
 @Controller('real_state')
 export class RealStateController {
-  constructor(private realStateService: RealStateService) {}
+  constructor(private realStateService: RealStateService) { }
 
   @Get()
   findAll(@Req() request: Request): Promise<RealState[]> {
@@ -23,7 +23,7 @@ export class RealStateController {
   }
 
   @Post()
-  createRealState(@Body() newRealState: RealStateDTO): Promise<RealState> {
+  createRealState(@Body() newRealState: RealStateDto): Promise<RealState> {
     console.log(newRealState);
     return this.realStateService.createRealState(newRealState);
   }
@@ -38,7 +38,7 @@ export class RealStateController {
     @Param('realStateId') realStateId: string,
     @Body() body,
   ): Promise<RealState> {
-    const newRealState: RealStateDTO = body;
+    const newRealState: RealStateDto = body;
     return this.realStateService.updateRealState(realStateId, newRealState);
   }
 

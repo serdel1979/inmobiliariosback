@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   OneToMany,
   BaseEntity,
+  ManyToOne,
 } from 'typeorm';
 import { RealState } from './realState.entity';
 @Entity()
@@ -14,6 +15,6 @@ export class District extends BaseEntity {
   @Column()
   name: string;
 
-  @OneToMany(() => RealState, (realState) => realState.district)
-  realState: RealState[];
+  @OneToMany(() => RealState, (realstate) => realstate.district)
+  realstates: RealState[]
 }
