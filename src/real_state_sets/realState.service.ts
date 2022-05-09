@@ -5,28 +5,23 @@ import { Repository } from 'typeorm';
 import { RealStateDto } from './createRealState.dto';
 import { RealState } from './entity/realState.entity';
 import { TypeRealState } from './entity/typeRealState.entity';
+import { District } from './entity/district.entity';
 
 
 @Injectable()
 export class RealStateService {
   constructor(
-    @InjectRepository(RealState)
-    private realStateRepository: Repository<RealState>,
-    @InjectRepository(TypeRealState) private typeRealStateRepository: Repository<TypeRealState>
-  ) {}
+    @InjectRepository(RealState) private realStateRepository: Repository<RealState>,
+    @InjectRepository(TypeRealState) private typeRealStateRepository: Repository<TypeRealState>,
+    @InjectRepository(District) private districtRepository: Repository<District> ) {}
 
   async findAll(params): Promise<RealState[]> {
     return await this.realStateRepository.find();
   }
 
   async createRealState(newRealState: RealStateDto): Promise<RealState> {
-    console.log("------------------------------------------------");
-    console.log(newRealState);
-    let typerealstate = await this.typeRealStateRepository.save({"description":"CERRADO"});
-    newRealState.typeRealStateId = typerealstate.id;
-    console.log(typerealstate);
-    console.log("------------------------------------------------");
-    
+    newRealState.type_real_state = await this.typeRealStateRepository.save({"description":"CERRADO"});
+    newRealState.district = await this.districtRepository.save({"name":"LA PLATA"});
     return this.realStateRepository.save(newRealState);
   }
 

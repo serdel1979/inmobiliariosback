@@ -33,7 +33,7 @@ export class RealState {
   @Column()
   register_source: string;
 
-  @ManyToOne(() => TypeRealState, (type_real_state) => type_real_state.realState, { nullable: false })
+  @ManyToOne(() => TypeRealState, (type_real_state) => type_real_state.realState)
   @JoinColumn()
   type_real_state: TypeRealState;
 

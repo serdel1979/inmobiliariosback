@@ -11,6 +11,7 @@ export class TypeRealState {
 
   @OneToMany(() => RealState, (realState) => realState.type_real_state, {
     cascade: true,
+    eager: true
   })
   realState: RealState[];
 }
