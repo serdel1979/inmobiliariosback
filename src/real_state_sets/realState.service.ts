@@ -43,9 +43,9 @@ export class RealStateService {
 
   async findRealState(realStateId: number): Promise<RealState> {
     let realstate = await this.realStateRepository.findOne({
-      where: { id: realStateId },
+      where: { id: 8},
     });
-    console.log(realstate.type_real_state);
+    console.log(realstate);
     return realstate;
   }
 }
