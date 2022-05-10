@@ -24,7 +24,6 @@ export class RealStateController {
 
   @Post()
   createRealState(@Body() newRealState: RealStateDto): Promise<RealState> {
-    console.log(newRealState);
     return this.realStateService.createRealState(newRealState);
   }
 

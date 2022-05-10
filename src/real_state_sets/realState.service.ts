@@ -45,11 +45,7 @@ export class RealStateService {
     let realstate = await this.realStateRepository.findOne({
       where: { id: realStateId },
     });
-    console.log("-----------------------------------");
-    console.log(realstate);
-    console.log("-----------------------------------");
-    let rel = await this.typeRealStateRepository.find({ relations: ["realState"] });
-    console.log(rel);
+    console.log(realstate.type_real_state);
     return realstate;
   }
 }
