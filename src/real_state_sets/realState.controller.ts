@@ -12,6 +12,7 @@ import { RealStateService } from './realState.service';
 import { Request } from 'express';
 import { RealState } from './entity/realState.entity';
 import { RealStateDto } from './createRealState.dto';
+import { ReturnRealStateDto } from './returnRealState.dto';
 
 @Controller('real_state')
 export class RealStateController {
@@ -42,8 +43,7 @@ export class RealStateController {
   }
 
   @Get(':realStateId')
-  async findRealState(@Param('realStateId') realStateId: number): Promise<RealState> {
-    let realstate = await this.realStateService.findRealState(realStateId);
-    return realstate;
+  async findRealState(@Param('realStateId') realStateId: number): Promise<ReturnRealStateDto> {
+    return await this.realStateService.findRealState(realStateId);
   }
 }
