@@ -7,9 +7,8 @@ export class RealStateDto {
   readonly id_cou: number;
   readonly priority: number;
   readonly register_source: string;
-  type_real_state: TypeRealState;
-  district: District;
+  readonly type_real_state: TypeRealState;
+  readonly district: District;
   readonly id_mae: number;
   readonly holders_count: number;
-
 }

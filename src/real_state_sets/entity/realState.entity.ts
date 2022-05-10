@@ -6,12 +6,13 @@ import {
   JoinColumn,
   OneToMany,
   ManyToOne,
+  BaseEntity,
 } from 'typeorm';
 import { TypeRealState } from './typeRealState.entity';
 import { State } from './state.entity';
 import { District } from './district.entity';
 @Entity()
-export class RealState {
+export class RealState extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

@@ -1,8 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, BaseEntity } from 'typeorm';
 import { RealState } from './realState.entity';
 
 @Entity()
-export class State {
+export class State extends BaseEntity{
   @PrimaryGeneratedColumn()
   id: number;
 

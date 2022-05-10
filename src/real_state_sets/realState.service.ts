@@ -20,8 +20,8 @@ export class RealStateService {
   }
 
   async createRealState(newRealState: RealStateDto): Promise<RealState> {
-    newRealState.type_real_state = await this.typeRealStateRepository.save({"description":"CERRADO"});
-    newRealState.district = await this.districtRepository.save({"name":"LA PLATA"});
+    //newRealState.type_real_state = await this.typeRealStateRepository.save({"description":"CERRADO"});
+    //newRealState.district = await this.districtRepository.save({"name":"LA PLATA"});
     return this.realStateRepository.save(newRealState);
   }
 
@@ -42,8 +42,14 @@ export class RealStateService {
   }
 
   async findRealState(realStateId: number): Promise<RealState> {
-    return await this.realStateRepository.findOne({
+    let realstate = await this.realStateRepository.findOne({
       where: { id: realStateId },
     });
+    console.log("-----------------------------------");
+    console.log(realstate);
+    console.log("-----------------------------------");
+    let rel = await this.typeRealStateRepository.find({ relations: ["realState"] });
+    console.log(rel);
+    return realstate;
   }
 }
