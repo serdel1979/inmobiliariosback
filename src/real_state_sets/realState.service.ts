@@ -1,5 +1,5 @@
 import { State } from './entity/state.entity';
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { RealStateDto } from './createRealState.dto';
@@ -28,13 +28,11 @@ export class RealStateService {
 
   async deleteRealState(realStateId: string): Promise<any> {
     let relState = this.findRealState(parseInt(realStateId));
-    var my_error: Error = new Error("Error de borrado!");
-    console.log((await relState).states.length);
-    try {
-      return await this.realStateRepository.delete({ id: parseInt(realStateId) });
-    } catch (err) {
-      throw my_error;
+    if ((await relState).states.length > 0) {
+      throw new BadRequestException({ message: "No se puede eliminar el conjunto inmobiliario con estados" });
     }
+    return await this.realStateRepository.delete({ id: parseInt(realStateId) });
+   
   }
 
   async updateRealState(
