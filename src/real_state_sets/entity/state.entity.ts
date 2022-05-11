@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, BaseEntity } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, BaseEntity, JoinColumn } from 'typeorm';
 import { RealState } from './realState.entity';
 
 @Entity()
@@ -19,5 +19,6 @@ export class State extends BaseEntity{
   sub_state: string;
 
   @ManyToOne(() => RealState, (realState) => realState.states)
+  @JoinColumn({ name: "realStateId", referencedColumnName: "id"})
   real_state: RealState;
 }

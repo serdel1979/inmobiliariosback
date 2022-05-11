@@ -34,12 +34,12 @@ export class RealState extends BaseEntity {
   @Column()
   register_source: string;
 
-  @ManyToOne(() => TypeRealState, (type_real_state) => type_real_state.realState)
+  @ManyToOne(() => TypeRealState, (type_real_state) => type_real_state.realState, {onDelete: "CASCADE"})
   @JoinColumn({ name: "typeRealStateId", referencedColumnName: "id"})
   type_real_state: TypeRealState;
 
 
-  @OneToMany(() => State, (state) => state.real_state)
+  @OneToMany(() => State, (state) => state.real_state, { eager: true, cascade: true})
   states: State[];
 
 

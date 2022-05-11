@@ -44,6 +44,9 @@ export class RealStateController {
 
   @Get(':realStateId')
   async findRealState(@Param('realStateId') realStateId: number): Promise<RealState> {
-    return await this.realStateService.findRealState(realStateId);
+    let ret: RealState;
+    ret = await this.realStateService.findRealState(realStateId);
+    console.log(ret.type_real_state.description);
+    return ret;
   }
 }

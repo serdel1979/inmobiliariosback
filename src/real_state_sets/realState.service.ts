@@ -7,7 +7,7 @@ import { RealState } from './entity/realState.entity';
 import { TypeRealState } from './entity/typeRealState.entity';
 import { District } from './entity/district.entity';
 import { ReturnRealStateDto } from './returnRealState.dto';
-import { from } from 'rxjs';
+import { from, throwError } from 'rxjs';
 
 
 @Injectable()
@@ -15,10 +15,10 @@ export class RealStateService {
   constructor(
     @InjectRepository(RealState) private realStateRepository: Repository<RealState>,
     @InjectRepository(TypeRealState) private typeRealStateRepository: Repository<TypeRealState>,
-    @InjectRepository(District) private districtRepository: Repository<District> ) {}
+    @InjectRepository(District) private districtRepository: Repository<District>) { }
 
   async findAll(params): Promise<RealState[]> {
-    return await this.realStateRepository.find();
+    return await this.realStateRepository.find({ relations: ["type_real_state"] });
   }
 
   async createRealState(newRealState: RealStateDto): Promise<RealState> {
@@ -26,7 +26,14 @@ export class RealStateService {
   }
 
   async deleteRealState(realStateId: string): Promise<any> {
-    return await this.realStateRepository.delete({ id: parseInt(realStateId) });
+    let relState = this.findRealState(parseInt(realStateId));
+    var my_error: Error = new Error("Error de borrado!");
+    console.log((await relState).states.length);
+    try {
+      return await this.realStateRepository.delete({ id: parseInt(realStateId) });
+    } catch (err) {
+      throw my_error;
+    }
   }
 
   async updateRealState(
@@ -42,10 +49,7 @@ export class RealStateService {
   }
 
   async findRealState(realStateId: number): Promise<RealState> {
-
-    let retorna: RealState = await this.realStateRepository.findOne(realStateId,{ relations: ["type_real_state"]});
-    console.log(retorna);
-    return retorna;
+    return await this.realStateRepository.findOne(realStateId, { relations: ["type_real_state"] });
   }
 
 
