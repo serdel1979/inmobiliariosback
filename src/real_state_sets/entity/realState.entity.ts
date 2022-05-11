@@ -43,6 +43,7 @@ export class RealState extends BaseEntity {
   states: State[];
 
 
-  @ManyToOne(() => District, (district) => district.realstates)
+  @ManyToOne(() => District, (district) => district.realstates, {onDelete: "CASCADE"})
+  @JoinColumn({ name: "districtId", referencedColumnName: "id"})
   district: District;
 }

@@ -15,6 +15,6 @@ export class District extends BaseEntity {
   @Column()
   name: string;
 
-  @OneToMany(() => RealState, (realstate) => realstate.district)
+  @OneToMany(() => RealState, (realstate) => realstate.district, { eager: true, cascade: true})
   realstates: RealState[]
 }
