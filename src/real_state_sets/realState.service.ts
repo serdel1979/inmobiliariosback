@@ -7,6 +7,7 @@ import { RealState } from './entity/realState.entity';
 import { TypeRealState } from './entity/typeRealState.entity';
 import { District } from './entity/district.entity';
 import { ReturnRealStateDto } from './returnRealState.dto';
+import { from } from 'rxjs';
 
 
 @Injectable()
@@ -21,8 +22,6 @@ export class RealStateService {
   }
 
   async createRealState(newRealState: RealStateDto): Promise<RealState> {
-    //newRealState.type_real_state = await this.typeRealStateRepository.save({"description":"CERRADO"});
-    //newRealState.district = await this.districtRepository.save({"name":"LA PLATA"});
     return this.realStateRepository.save(newRealState);
   }
 
@@ -43,10 +42,13 @@ export class RealStateService {
   }
 
   async findRealState(realStateId: number): Promise<RealState> {
-    let retorna: RealState = await this.realStateRepository.findOne({  where: { id: realStateId }});
- 
-    console.log(retorna.type_real_state);
-  
+
+    let retorna: RealState = await this.realStateRepository.findOne(realStateId, {
+      relations: [],
+    });
+    console.log(retorna);
     return retorna;
   }
+
+
 }
