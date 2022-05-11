@@ -42,9 +42,11 @@ export class RealStateService {
     return this.realStateRepository.save(updated);
   }
 
-  async findRealState(realStateId: number): Promise<ReturnRealStateDto> {
-    let retorna: ReturnRealStateDto = await this.realStateRepository.findOne({  where: { id: realStateId }});
-    console.log(retorna);
+  async findRealState(realStateId: number): Promise<RealState> {
+    let retorna: RealState = await this.realStateRepository.findOne({  where: { id: realStateId }});
+ 
+    console.log(retorna.type_real_state);
+  
     return retorna;
   }
 }
