@@ -35,7 +35,7 @@ export class RealState extends BaseEntity {
   register_source: string;
 
   @ManyToOne(() => TypeRealState, (type_real_state) => type_real_state.realState)
-  @JoinColumn({ name: 'typeRealStateId' })
+  @JoinColumn({ name: "typeRealStateId", referencedColumnName: "id"})
   type_real_state: TypeRealState;
 
 

@@ -9,9 +9,6 @@ export class TypeRealState extends BaseEntity {
   @Column()
   description: string;
 
-  @OneToMany(() => RealState, (realState) => realState.type_real_state, {
-    cascade: true,
-    eager: true
-  })
+  @OneToMany(() => RealState, (realState) => realState.type_real_state, { eager: true, cascade: true})
   realState: RealState[];
 }

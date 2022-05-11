@@ -43,9 +43,7 @@ export class RealStateService {
 
   async findRealState(realStateId: number): Promise<RealState> {
 
-    let retorna: RealState = await this.realStateRepository.findOne(realStateId, {
-      relations: [],
-    });
+    let retorna: RealState = await this.realStateRepository.findOne(realStateId,{ relations: ["type_real_state"]});
     console.log(retorna);
     return retorna;
   }
