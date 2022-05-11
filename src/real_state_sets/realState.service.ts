@@ -22,6 +22,7 @@ export class RealStateService {
   }
 
   async createRealState(newRealState: RealStateDto): Promise<RealState> {
+    newRealState.current_state = "NO CONFIRMADO";
     return this.realStateRepository.save(newRealState);
   }
 

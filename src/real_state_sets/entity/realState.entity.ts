@@ -34,6 +34,9 @@ export class RealState extends BaseEntity {
   @Column()
   register_source: string;
 
+  @Column()
+  current_state: string;
+
   @ManyToOne(() => TypeRealState, (type_real_state) => type_real_state.realState, {onDelete: "CASCADE"})
   @JoinColumn({ name: "typeRealStateId", referencedColumnName: "id"})
   type_real_state: TypeRealState;
