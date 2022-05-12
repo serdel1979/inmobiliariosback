@@ -1,13 +1,11 @@
-import { State } from './entity/state.entity';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { RealStateDto } from './createRealState.dto';
-import { RealState } from './entity/realState.entity';
-import { TypeRealState } from './entity/typeRealState.entity';
-import { District } from './entity/district.entity';
-import { ReturnRealStateDto } from './returnRealState.dto';
-import { from, throwError } from 'rxjs';
+import { RealStateDto } from '../dto/createRealState.dto';
+import { District } from '../entity/district.entity';
+import { RealState } from '../entity/realState.entity';
+import { TypeRealState } from '../entity/typeRealState.entity';
+
 
 
 @Injectable()

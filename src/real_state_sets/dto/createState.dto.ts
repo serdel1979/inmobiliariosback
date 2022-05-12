@@ -1,4 +1,3 @@
-import { State } from './entity/state.entity';
 export class CreateStateDto {
   readonly state: string;
   readonly updated_user: Date;

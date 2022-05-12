@@ -10,9 +10,8 @@ import {
 } from '@nestjs/common';
 import { RealStateService } from './realState.service';
 import { Request } from 'express';
-import { RealState } from './entity/realState.entity';
-import { RealStateDto } from './createRealState.dto';
-import { ReturnRealStateDto } from './returnRealState.dto';
+import { RealState } from '../entity/realState.entity';
+import { RealStateDto } from '../dto/createRealState.dto';
 
 @Controller('real_state')
 export class RealStateController {

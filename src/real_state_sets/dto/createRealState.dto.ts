@@ -1,5 +1,5 @@
-import { District } from "./entity/district.entity";
-import { TypeRealState } from "./entity/typeRealState.entity";
+import { District } from "../entity/district.entity";
+import { TypeRealState } from "../entity/typeRealState.entity";
 
 export class RealStateDto {
   readonly name: string;

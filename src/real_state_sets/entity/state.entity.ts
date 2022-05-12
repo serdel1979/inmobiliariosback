@@ -18,7 +18,7 @@ export class State extends BaseEntity{
   @Column()
   sub_state: string;
 
-  @ManyToOne(() => RealState, (realState) => realState.states)
+  @ManyToOne(() => RealState, (realState) => realState.states, {onDelete: "CASCADE"})
   @JoinColumn({ name: "realStateId", referencedColumnName: "id"})
   real_state: RealState;
 }
