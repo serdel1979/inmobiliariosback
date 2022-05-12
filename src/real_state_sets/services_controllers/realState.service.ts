@@ -16,7 +16,7 @@ export class RealStateService {
     @InjectRepository(District) private districtRepository: Repository<District>) { }
 
   async findAll(params): Promise<RealState[]> {
-    return await this.realStateRepository.find({ relations: ["type_real_state"] });
+    return await this.realStateRepository.find({ relations: ["type_real_state","district"] });
   }
 
   async createRealState(newRealState: RealStateDto): Promise<RealState> {
