@@ -19,6 +19,12 @@ export class RealStateService {
     return await this.realStateRepository.find({ relations: ["type_real_state","district"] });
   }
 
+
+
+  async getTypeRealStates(): Promise<TypeRealState[]> {
+    return await this.typeRealStateRepository.find();
+  }
+
   async createRealState(newRealState: RealStateDto): Promise<RealState> {
     newRealState.current_state = "NO CONFIRMADO";
     return this.realStateRepository.save(newRealState);

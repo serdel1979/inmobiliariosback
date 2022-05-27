@@ -12,6 +12,7 @@ import { RealStateService } from './realState.service';
 import { Request } from 'express';
 import { RealState } from '../entity/realState.entity';
 import { RealStateDto } from '../dto/createRealState.dto';
+import { TypeRealState } from '../entity/typeRealState.entity';
 
 @Controller('real_state')
 export class RealStateController {
@@ -20,6 +21,11 @@ export class RealStateController {
   @Get()
   findAll(@Req() request: Request): Promise<RealState[]> {
     return this.realStateService.findAll(request.query);
+  }
+
+  @Get('type_real_state')
+  allTypes(@Req() request: Request): Promise<TypeRealState[]> {
+    return this.realStateService.getTypeRealStates();
   }
 
   @Post()
