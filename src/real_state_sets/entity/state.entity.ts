@@ -12,7 +12,7 @@ export class State extends BaseEntity{
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   updated_system: Date;
 
-  @Column({ type: 'timestamp' })
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   updated_user: Date;
 
   @Column()
