@@ -57,7 +57,7 @@ export class RealStateService {
   }
 
   async findRealState(realStateId: number): Promise<RealState> {
-    return await this.realStateRepository.findOne(realStateId, { relations: ["type_real_state"] });
+    return await this.realStateRepository.findOne(realStateId, { relations: ["type_real_state","district"] });
   }
 
 
