@@ -13,6 +13,8 @@ import { Request } from 'express';
 import { RealState } from '../entity/realState.entity';
 import { RealStateDto } from '../dto/createRealState.dto';
 import { TypeRealState } from '../entity/typeRealState.entity';
+import { District } from '../entity/district.entity';
+import { DistrictDto } from '../dto/district.dto';
 
 @Controller('real_state')
 export class RealStateController {
@@ -28,8 +30,15 @@ export class RealStateController {
     return this.realStateService.getTypeRealStates();
   }
 
+
+  @Get('districts')
+  allDistricts(@Req() request: Request): Promise<District[]> {
+    return this.realStateService.getDistricts();
+  }
+
   @Post()
   createRealState(@Body() newRealState: RealStateDto): Promise<RealState> {
+    console.log("Recibiendo -->",newRealState);
     return this.realStateService.createRealState(newRealState);
   }
 

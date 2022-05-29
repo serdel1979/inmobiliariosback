@@ -2,6 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { RealStateDto } from '../dto/createRealState.dto';
+import { DistrictDto } from '../dto/district.dto';
 import { District } from '../entity/district.entity';
 import { RealState } from '../entity/realState.entity';
 import { TypeRealState } from '../entity/typeRealState.entity';
@@ -23,6 +24,10 @@ export class RealStateService {
 
   async getTypeRealStates(): Promise<TypeRealState[]> {
     return await this.typeRealStateRepository.find();
+  }
+
+  async getDistricts(): Promise<District[]> {
+    return await this.districtRepository.find();
   }
 
   async createRealState(newRealState: RealStateDto): Promise<RealState> {
